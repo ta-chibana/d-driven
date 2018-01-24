@@ -1,7 +1,5 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import App from 'components/App'
 
-export default () => {
-  return (
-    <div>hello world</div>
-  )
-}
+export default connect()(App)

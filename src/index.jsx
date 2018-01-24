@@ -12,7 +12,7 @@ const sagaMiddleware = createSagaMiddleware()
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 let store = createStore(
-  combineReducers({ rootReducer }),
+  rootReducer,
   composeEnhancers(applyMiddleware(sagaMiddleware))
 )
 
