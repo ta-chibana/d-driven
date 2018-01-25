@@ -1,5 +1,9 @@
 import React from 'react'
-import { MuiThemeProvider, AppBar, MenuItem, Drawer } from 'material-ui'
+import {
+  MuiThemeProvider, AppBar, MenuItem, Drawer, IconButton
+} from 'material-ui'
+import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
+import { fullWhite } from 'material-ui/styles/colors'
 
 export default class extends React.Component {
   constructor(props) {
@@ -25,14 +29,18 @@ export default class extends React.Component {
             docked={false}
             width={200}
             open={this.state.open}
+            openSecondary={true}
           >
             <MenuItem onClick={this.handleClose}>one</MenuItem>
             <MenuItem onClick={this.handleClose}>two</MenuItem>
           </Drawer>
           <AppBar
-            title="Title"
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
-            onLeftIconButtonClick={this.handleToggle}
+            title="YASEYO"
+            iconElementRight={
+              <IconButton><NavigationMenu color={fullWhite} /></IconButton>
+            }
+            onRightIconButtonClick={this.handleToggle}
+            showMenuIconButton={false}
           />
         </React.Fragment>
       </MuiThemeProvider>
