@@ -1,8 +1,10 @@
 import React from 'react'
 import {
-  MuiThemeProvider, AppBar, MenuItem, Drawer, IconButton
+  MuiThemeProvider, AppBar, MenuItem, Drawer, IconButton,
+  RaisedButton, SvgIcon
 } from 'material-ui'
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
+import ImagePhotoCamera from 'material-ui/svg-icons/image/photo-camera'
 import { fullWhite } from 'material-ui/styles/colors'
 
 export default class extends React.Component {
@@ -11,6 +13,7 @@ export default class extends React.Component {
     this.state = { open: false }
     this.handleToggle = this.handleToggle.bind(this)
     this.handleClose = this.handleClose.bind(this)
+    this.handleSelectedFile = this.handleSelectedFile.bind(this)
   }
 
   handleToggle() {
@@ -19,6 +22,10 @@ export default class extends React.Component {
 
   handleClose() {
     this.setState({ open: false })
+  }
+
+  handleSelectedFile() {
+    this.refs.fileSelector.click()
   }
 
   render() {
@@ -42,6 +49,15 @@ export default class extends React.Component {
             onRightIconButtonClick={this.handleToggle}
             showMenuIconButton={false}
           />
+          <input
+            type="file"
+            accept="image"
+            style={{ display: 'none' }}
+            ref="fileSelector"
+          />
+          <IconButton>
+            <ImagePhotoCamera onClick={this.handleSelectedFile} />
+          </IconButton>
         </React.Fragment>
       </MuiThemeProvider>
     )
