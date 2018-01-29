@@ -1,11 +1,11 @@
 import React from 'react'
 import {
-  MuiThemeProvider, AppBar, MenuItem, Drawer, IconButton,
-  RaisedButton, SvgIcon
+  MuiThemeProvider, AppBar, IconButton, RaisedButton, SvgIcon
 } from 'material-ui'
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
 import ImagePhotoCamera from 'material-ui/svg-icons/image/photo-camera'
 import { fullWhite } from 'material-ui/styles/colors'
+import Menu from 'components/Menu'
 
 export default class extends React.Component {
   constructor(props) {
@@ -31,16 +31,8 @@ export default class extends React.Component {
   render() {
     return (
       <MuiThemeProvider>
-        <React.Fragment>
-          <Drawer
-            docked={false}
-            width={200}
-            open={this.state.open}
-            openSecondary={true}
-          >
-            <MenuItem onClick={this.handleClose}>one</MenuItem>
-            <MenuItem onClick={this.handleClose}>two</MenuItem>
-          </Drawer>
+        <>
+          <Menu open={this.state.open} onClickClose={this.handleClose} />
           <AppBar
             title="YASEYO"
             iconElementRight={
@@ -58,7 +50,7 @@ export default class extends React.Component {
           <IconButton>
             <ImagePhotoCamera onClick={this.handleSelectedFile} />
           </IconButton>
-        </React.Fragment>
+        </>
       </MuiThemeProvider>
     )
   }
