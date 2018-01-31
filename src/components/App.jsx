@@ -11,9 +11,15 @@ export default class extends React.Component {
   constructor(props) {
     super(props)
     this.state = { open: false }
+    this.fileReader = new FileReader()
+    this.fileReader.onload = e => {
+      this.props.onChangeImage(e.target.result)
+    }
+
     this.handleToggle = this.handleToggle.bind(this)
     this.handleClose = this.handleClose.bind(this)
     this.handleSelectedFile = this.handleSelectedFile.bind(this)
+    this.handleChangeImage = this.handleChangeImage.bind(this)
   }
 
   handleToggle() {
@@ -26,6 +32,10 @@ export default class extends React.Component {
 
   handleSelectedFile() {
     this.refs.fileSelector.click()
+  }
+
+  handleChangeImage(e) {
+    this.fileReader.readAsDataURL(e.target.files[0])
   }
 
   render() {
@@ -46,6 +56,7 @@ export default class extends React.Component {
             accept="image"
             style={{ display: 'none' }}
             ref="fileSelector"
+            onChange={this.handleChangeImage}
           />
           <IconButton>
             <ImagePhotoCamera onClick={this.handleSelectedFile} />
