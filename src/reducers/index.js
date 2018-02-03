@@ -2,12 +2,12 @@ import { handleActions } from 'redux-actions'
 import actions from 'actions'
 
 const initialState = {
-  encodedFile: null
+  encodedImage: null
 }
 
 export default handleActions({
   [actions.encodeSuccess]: (state, action) => ({
     ...state,
-    encodedFile: action.payload.image
+    encodedImage: action.payload.image
   })
 }, initialState)
