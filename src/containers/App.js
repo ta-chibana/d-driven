@@ -1,10 +1,10 @@
 import { connect } from 'react-redux'
-import App from 'components/App'
-import actions from 'actions'
+import App from '../components/App'
+import actions from '../actions'
 
 const mapDispatchToProps = dispatch => ({
-  onChangeImage: (encodedImage) => {
-    dispatch(actions.encodeSuccess(encodedImage))
+  onChangeImage: (image) => {
+    dispatch(actions.uploadImage(image))
   }
 })
 

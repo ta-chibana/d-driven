@@ -5,16 +5,12 @@ import {
 import NavigationMenu from 'material-ui/svg-icons/navigation/menu'
 import ImagePhotoCamera from 'material-ui/svg-icons/image/photo-camera'
 import { fullWhite } from 'material-ui/styles/colors'
-import Menu from 'components/Menu'
+import Menu from './Menu'
 
 export default class extends React.Component {
   constructor(props) {
     super(props)
     this.state = { open: false }
-    this.fileReader = new FileReader()
-    this.fileReader.onload = e => {
-      this.props.onChangeImage(e.target.result)
-    }
 
     this.handleToggle = this.handleToggle.bind(this)
     this.handleClose = this.handleClose.bind(this)
@@ -35,7 +31,7 @@ export default class extends React.Component {
   }
 
   handleChangeImage(e) {
-    this.fileReader.readAsDataURL(e.target.files[0])
+    this.props.onChangeImage(e.target.files[0])
   }
 
   render() {

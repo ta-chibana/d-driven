@@ -22,14 +22,7 @@ module.exports = {
     contentBase: path.join(__dirname, 'public')
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
-    alias: {
-      actions: path.resolve(__dirname, 'src/actions'),
-      components: path.resolve(__dirname, 'src/components'),
-      containers: path.resolve(__dirname, 'src/containers'),
-      reducers: path.resolve(__dirname, 'src/reducers'),
-      sagas: path.resolve(__dirname, 'src/sagas')
-    }
+    extensions: ['.js', '.jsx']
   },
   devtool: 'inline-source-map'
 }
