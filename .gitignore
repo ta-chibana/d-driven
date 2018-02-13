@@ -4,3 +4,4 @@ yarn-error.log
 src/firebase/config.js
 public/index.js
 firebase-admin.json
+functions/lib/

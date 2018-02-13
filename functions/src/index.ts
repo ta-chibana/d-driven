@@ -1,8 +1,28 @@
 import * as functions from 'firebase-functions';
+import vision from '@google-cloud/vision';
 
-// // Start writing Firebase Functions
-// // https://firebase.google.com/functions/write-firebase-functions
-//
-// export const helloWorld = functions.https.onRequest((request, response) => {
-//  response.send("Hello from Firebase!");
-// });
+export const subscribeImageUpload = functions.storage.object().onChange(event => {
+  const object = event.data;
+  const client = new vision.ImageAnnotatorClient();
+  const request = {
+    image: {
+      source: {
+        imageUri: `gs://${object.bucket}/${object.name}`
+      }
+    }
+  };
+
+  console.log(`*** ${request.image.source.imageUri} ***`);
+
+  client.textDetection(request).then(response => {
+    console.log('*** results ***');
+    const detections = response[0].textAnnotations;
+    for (const text of detections) {
+      console.log(text.description);
+    }
+    console.log('***************');
+  }).catch(error => {
+    console.error('*** error occurred ***');
+    console.error(error);
+  })
+})
