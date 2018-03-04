@@ -8,7 +8,19 @@
     "shell": "build && firebase experimental:functions:shell",
     "start": "shell",
     "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "logs": "firebase functions:log",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "jest": {
+    "moduleFileExtensions": ["ts", "js"],
+    "transform": {
+      "^.+\\.(ts)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testMatch": [
+      "<rootDir>/__test__/*.spec.(ts|js)"
+    ],
+    "setupTestFrameworkScriptFile": "./__test__/config/setupTestFramework.js"
   },
   "main": "lib/index.js",
   "dependencies": {
@@ -17,6 +29,9 @@
     "firebase-functions": "^0.8.1"
   },
   "devDependencies": {
+    "@types/jest": "^22.1.4",
+    "jest": "^22.4.2",
+    "ts-jest": "^22.4.1",
     "tslint": "^5.8.0",
     "typescript": "^2.5.3"
   },
