@@ -20,7 +20,12 @@
     "testMatch": [
       "<rootDir>/__test__/*.spec.(ts|js)"
     ],
-    "setupTestFrameworkScriptFile": "./__test__/config/setupTestFramework.js"
+    "setupTestFrameworkScriptFile": "./__test__/config/setupTestFramework.js",
+    "globals": {
+      "ts-jest": {
+        "enableTsDiagnostics": true
+      }
+    }
   },
   "main": "lib/index.js",
   "dependencies": {
